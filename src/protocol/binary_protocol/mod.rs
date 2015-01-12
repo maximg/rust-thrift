@@ -1,6 +1,7 @@
 use protocol;
 use protocol::{ MessageType, Protocol, Type };
 use transport::Transport;
+use std::num::FromPrimitive;
 
 static BINARY_PROTOCOL_VERSION_1: u16 = 0x8001;
 
@@ -219,7 +220,7 @@ impl Protocol for BinaryProtocol {
   }
 
   fn read_binary(&self, transport: &mut Transport) -> Vec<u8> {
-    let len = self.read_i32(transport) as uint;
+    let len = self.read_i32(transport) as usize;
     transport.read_exact(len).unwrap()
   }
 }
