@@ -1,3 +1,6 @@
+
+#![feature(slicing_syntax)] 
+
 pub use protocol::Protocol;
 pub use transport::Transport;
 
